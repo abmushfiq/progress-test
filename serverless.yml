@@ -3,7 +3,6 @@ service: my-react-app
 provider:
   name: aws
   runtime: nodejs14.x
-  profile: 237206178434_testing-platform-serverless-user
   stage: dev
   region: us-east-1
 
