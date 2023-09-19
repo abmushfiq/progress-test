@@ -23,7 +23,8 @@ jobs:
 
       - name: Install Serverless Framework and plugins
         run: |
-          npm install --save-dev serverless serverless-s3-sync
+          npm install --global serverless
+          npm install --save-dev serverless-finch
 
       - name: Build React app
         run: npm run build
