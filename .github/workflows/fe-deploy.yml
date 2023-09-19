@@ -16,15 +16,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: '14.x'
 
       - name: Install dependencies
         run: npm install
 
       - name: Install Serverless Framework and plugins
         run: |
-          npm install --global serverless
-          npm install --save-dev serverless-finch
+          npm install -g serverless
+          npm install --save-dev serverless-s3-sync
 
       - name: Build React app
         run: npm run build
@@ -34,11 +34,10 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Deploy React app using Serverless
-        run: npx sls client deploy --no-confirm
+        run: sls s3sync
         env:
           AWS_S3_BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET_NAME }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
