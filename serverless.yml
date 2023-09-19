@@ -15,9 +15,9 @@ custom:
   bucketName2: my-serverless-react-app-2
   s3Sync:
     - bucketName: ${self:custom.bucketName1}
-      localDir: ./my-app/build
+      localDir: ./build
     - bucketName: ${self:custom.bucketName2}
-      localDir: ./my-app/build
+      localDir: ./build
 
 resources:
   Resources:
